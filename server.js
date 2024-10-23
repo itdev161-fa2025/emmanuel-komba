@@ -7,6 +7,8 @@ import jwt from 'jsonwebtoken';
 import config from 'config';
 import User from './models/User';
 
+
+
 //Initialize express application
 const app = express();
 
@@ -74,6 +76,7 @@ app.post(
     }
 });
 
-//connection listene
+//connection listener
+
 const port = 5000;
 app.listen(port, () => console.log(`Express server running on port ${port}`));
