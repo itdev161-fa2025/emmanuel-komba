@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Router } from 'express';
 import connectDatabase from './config/db';
 import { check, validationResult } from 'express-validator';
 import cors from 'cors';
@@ -6,6 +6,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import config from 'config';
 import User from './models/User';
+import Post from './models/Post';
 import auth from './middleware/ auth';
 
 
@@ -129,4 +130,43 @@ const returnToken = (user, res) => {
         }
     );
 };
+
+app.post(
+    '/api/posts',
+    [
+        auth,
+        [
+            check('title', 'Title text is required')
+                .not()
+                .isEmpty(),
+            check('body', 'Body text is required')
+                .not()
+                .isEmpty()
+        ]
+    ],
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            res.status(400).json({ errors: errors.array() });
+        } else {
+            const { title, body } = req.body;
+            try {
+                const user = await User.findById(req.user.id);
+
+                const post = new Post({
+                    user: user.id,
+                    title: title,
+                    body: body
+                });
+
+                await post.save();
+
+                res.json(post);
+            } catch(error) {
+                console.error(error);
+                res.status(500).send('Server error');
+            }
+        }
+    }
+);
 
