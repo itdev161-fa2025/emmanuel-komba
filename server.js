@@ -17,7 +17,7 @@ connectDatabase();
 
 //Configure Middleware
 app.use(express.json({ extended: false }));
-app.use(cors({ origin: 'http://localhost:5000' }));
+app.use(cors({ origin: 'http://localhost:3000' }));
 
 //API endpoints
 app.get('/', (req, res) =>
@@ -241,4 +241,8 @@ app.put('/api/posts/:id', auth, async (req, res) => {
         res.status(500).send('Server error')
     }
 });
+
+//
+const port = 3001;
+app.listen(port, () => console.log(`Express server running on port ${port}`));
 
