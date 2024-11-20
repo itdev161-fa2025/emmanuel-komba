@@ -1,7 +1,7 @@
 {
-  "name": "emmanuel-komba",
+  "name": "mike-hunsicker",
   "version": "1.0.0",
-  "description": "made changes",
+  "description": "Updated readme",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,21 +14,13 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "browserify-zlib": "^0.2.0",
     "config": "^3.3.12",
     "cors": "^2.8.5",
-    "crypto-browserify": "^3.12.1",
     "esm": "^3.2.25",
     "express": "^4.19.2",
     "express-validator": "^7.2.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^6.9.2",
-    "path-browserify": "^1.0.1",
-    "querystring-es3": "^0.2.1",
-    "stream-browserify": "^3.0.0",
-    "stream-http": "^3.2.0",
-    "url": "^0.11.4",
-    "util": "^0.12.5"
+    "mongoose": "^6.9.2"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
